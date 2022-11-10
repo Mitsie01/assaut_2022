@@ -34,7 +34,7 @@ fn main () {
     let idle = BufReader::new(File::open(idle_paths[0]).unwrap());
 
     // Decode and play sound
-    let source = Decoder::new(fx).unwrap();
+    let source = Decoder::new(idle).unwrap();
     sink.append(source);
 
     sink.sleep_until_end();
