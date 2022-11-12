@@ -1,7 +1,8 @@
 use std::fs::File;
 use std::io::BufReader;
-use rodio::{Decoder, OutputStream, Sink, source::Source};
+use rodio::{Decoder, OutputStream, Sink};
 use std::fs;
+use rust_gpiozero::*;
 
 fn main () {
     // Get a output stream handle to the default physical sound device
@@ -27,17 +28,40 @@ fn main () {
     // Arrays containing file paths
     let fx_paths = ["../audio/fx/lessgo.mp3", "../audio/fx/mario-kart.mp3"];
     let idle_paths = ["../audio/idle/cleopatra.mp3", "../audio/idle/prince-of-egypt.mp3", "../audio/idle/princess-of-persia.mp3", "../audio/idle/sands-of-arabia.mp3"];
-
+    let racing_paths = [""];
 
     // Load file from path list - path relative form Cargo.toml
     let fx = BufReader::new(File::open(fx_paths[0]).unwrap());
     let idle = BufReader::new(File::open(idle_paths[0]).unwrap());
+    let racing = BufReader::new(File::open(racing_paths[0]).unwrap());
 
     // Decode and play sound
-    let source = Decoder::new(fx).unwrap();
-    sink.append(source);
+    let source_idle = Decoder::new(idle).unwrap();
+    let source_fx = Decoder::new(fx).unwrap();
+    let source_racing = Decoder::new(racing).unwrap();
+    sink.append(source_idle);
 
-    sink.sleep_until_end();
+    // loop {
+    //     // check start pin value
+    //     // if sink = empty
+    //         // append idle song
+        
+    //     if pin_value == true {
+    //         sink.stop();
+    //         sink.append(source_fx);
+    //         sink.append(source_racing);
+    //         // enable racing pin
+    //         // disable racing pin
+    //         // check finished pin
+    //         // while finished pin == false
+    //             // check finished pin
+    //             // if sink = empty
+    //             // append racing song
+    //         // stop sink
+    //         // play lane effect
+    //         // sleep_until_finished
+    //     }
+    // }
     
     // stream_handle.play_raw(source.convert_samples());
 

@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 rodio = "0.16.0"
+rust_gpiozero = "^0.2"

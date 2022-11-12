@@ -326,6 +326,7 @@ name = "main"
 version = "0.1.0"
 dependencies = [
  "rodio",
+ "rust_gpiozero",
 ]
 
 [[package]]
@@ -650,6 +651,25 @@ dependencies = [
  "hound",
  "lewton",
  "minimp3",
+]
+
+[[package]]
+name = "rppal"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eb26758c881b4837b2f4aef569e4251f75388e36b37204e1804ef429c220121c"
+dependencies = [
+ "lazy_static",
+ "libc",
+]
+
+[[package]]
+name = "rust_gpiozero"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ef0e15226913de082030649dc55bb1db057ffc1c7c2b418454912a85b40523f3"
+dependencies = [
+ "rppal",
 ]
 
 [[package]]
